@@ -1,0 +1,156 @@
+# Custom Video Player (Wix-Compatible Single File)
+
+## Overview
+
+This project is a custom video player built on top of the YouTube Iframe API, designed specifically to operate within constrained environments such as Wix, where modular file structures and advanced asset loading are limited.
+
+The implementation follows a single-file architecture (HTML, CSS, and JavaScript combined) while maintaining internal organization, scoped behavior, and controlled UI interactions.
+
+The primary goal of this player is to provide a controlled playback experience, reduce content misuse, and extend default YouTube capabilities with a custom interface.
+
+---
+
+## Key Features
+
+### Custom Playback Control
+
+* Play / Pause toggle via button and overlay click
+* Synchronized UI state with player status
+* Overlay interaction layer to control user behavior
+
+### Progress Tracking and Seeking
+
+* Real-time progress bar updates
+* Click-to-seek functionality
+* Hover preview displaying timestamp
+* Smooth visual feedback during playback
+
+### Time Display
+
+* Dynamic current time and total duration
+* Formatted output (MM:SS)
+
+### Volume Control
+
+* Adjustable volume slider (0–100)
+* Mute / Unmute toggle button
+* Visual feedback based on volume state
+
+### Fullscreen Support
+
+* Native fullscreen API integration
+* Toggle button with state feedback
+* Responsive behavior in fullscreen mode
+
+### Settings Menu
+
+* Toggleable settings panel
+* Playback speed control (1x, 1.5x, 2x)
+* Video quality selection (1080p, 720p, 480p)
+* Submenu navigation with back controls
+
+### UI Overlay System
+
+* Transparent interaction layer over video
+* Prevents default right-click behavior
+* Centralized click handling for playback control
+
+---
+
+## Technical Implementation
+
+### YouTube Iframe API Integration
+
+* Embedded player initialized via `YT.Player`
+* Custom controls replace default YouTube UI
+* Player configured with:
+
+  * `controls: 0`
+  * `modestbranding: 1`
+  * `rel: 0`
+  * `playsinline: 1`
+
+### Single-File Architecture
+
+* Designed for platforms that restrict multi-file structures (e.g., Wix)
+* Includes:
+
+  * Inline HTML structure
+  * Embedded `<style>` block for component styling
+  * Embedded `<script>` block for logic and behavior
+
+### DOM Interaction Strategy
+
+* Centralized element selection
+* Event-driven UI updates
+* Timed interval updates for playback synchronization
+
+### State Handling
+
+* Playback state managed through YouTube API (`getPlayerState`)
+* UI elements updated dynamically based on player state
+
+### Performance Considerations
+
+* Interval-based updates optimized for UI responsiveness
+* Minimal DOM reflows during playback updates
+* Lightweight interaction model without external dependencies
+
+---
+
+## Constraints and Design Decisions
+
+This implementation intentionally uses a single-file structure due to Wix platform limitations, which restrict:
+
+* External script loading flexibility
+* Modular CSS and JS separation
+* Advanced build pipelines
+
+Despite these constraints, the solution maintains:
+
+* Scoped styling conventions
+* Organized logical sections
+* Predictable interaction patterns
+* Clear separation between UI and behavior within the same file
+
+---
+
+## Use Case
+
+This player was developed for scenarios where:
+
+* Content access needs to be controlled
+* Default YouTube UI is insufficient
+* Platform limitations prevent modular frontend architecture
+* A custom user experience is required within an embedded environment
+
+---
+
+## Limitations
+
+* Relies on YouTube Iframe API (not a fully custom media engine)
+* Limited control over advanced streaming features
+* Styling and logic are constrained by single-file architecture
+* Not intended for large-scale application reuse without refactoring
+
+---
+
+## Future Improvements (Optional)
+
+* Event tracking (analytics / user behavior)
+* Enhanced accessibility (ARIA roles, keyboard navigation)
+* Modular refactor for non-restricted environments
+* UI/UX refinements for mobile interaction
+
+---
+
+## Summary
+
+This project demonstrates the ability to:
+
+* Build custom UI on top of third-party APIs
+* Work effectively within platform constraints
+* Control user interaction and playback behavior
+* Deliver production-ready solutions in restricted environments
+
+It reflects practical problem-solving in real-world scenarios where ideal architecture is not always possible.
